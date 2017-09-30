@@ -19,15 +19,22 @@
     </ul>
     -->
 
-    <p> Find my event </p>
+    <p> My event </p>
 
     <fb-signin-button :params="fbSignInParams" @success="onSignInSuccess" @error="onSignInError">
       Sign in with Facebook
     </fb-signin-button>
 
+    <p id="event"> </p>
+    <p id="event1"> </p>
+    <p id="event2"> </p>
+    <p id="event3"> </p>
+    <p id="event4"> </p>
+
   </div>
 </template>
 
+<!-- scope is token in facebook -->
 <script>
 export default {
   name: 'hello',
@@ -46,6 +53,16 @@ export default {
       window.FB.api('/me/events', text => {
         // getdata in array[0] and getarrayinJSON
         console.log(`Good to see you, ${text.data[0]['name']}`)
+        var s = `${text.data[0]['name']}`
+        var s1 = `${text.data[0]['description']}`
+        var s2 = `${text.data[0]['start_time']}`
+        var s3 = `${text.data[0]['end_time']}`
+        var s4 = `${text.data[0]['place']['name']}`
+        document.getElementById('event').innerHTML = s
+        document.getElementById('event1').innerHTML = s1
+        document.getElementById('event2').innerHTML = s2
+        document.getElementById('event3').innerHTML = s3
+        document.getElementById('event4').innerHTML = s4
       })
     },
     onSignInError (error) {
