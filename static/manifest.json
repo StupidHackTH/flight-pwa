@@ -1,21 +1,20 @@
 {
-  "name": "cropchat",
-  "short_name": "A cat messager app",
+  "name": "flight-pwa",
+  "short_name": "flight-pwa",
   "icons": [
     {
-      "src": "/static/img/icons/android-chrome-192x192.png",
+      "src": "/static/img/icons/index.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpg"
     },
     {
-      "src": "/static/img/icons/android-chrome-512x512.png",
+      "src": "/static/img/icons/index.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ],
-  "start_url": "/",
-  "display": "fullscreen",
-  "orientation": "portrait",
-  "background_color": "#2196f3",
-  "theme_color": "#2196f3"
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "theme_color": "#2c3e50"
 }

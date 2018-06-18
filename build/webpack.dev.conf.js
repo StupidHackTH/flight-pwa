@@ -1,12 +1,14 @@
-var fs = require('fs')
-var path = require('path')
-var utils = require('./utils')
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+'use strict'
+
+const fs = require('fs')
+const path = require('path')
+const utils = require('./utils')
+const config = require('../config')
+const merge = require('webpack-merge')
+const webpack = require('webpack')
+const baseWebpackConfig = require('./webpack.base.conf')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -34,6 +36,16 @@ module.exports = merge(baseWebpackConfig, {
       serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname,
         './service-worker-dev.js'), 'utf-8')}</script>`
     }),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
+
+    new webpack.ProvidePlugin({
+      // jquery
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      // semantic
+      semantic: 'semantic-ui-css',
+      slideout: 'vue-slideout'
+    })
   ]
 })
